@@ -1,20 +1,16 @@
-package com.example.services;
+package com.challenge.services;
 
-import com.example.Model.Enums.MotionRotationalDirection;
-import com.example.Model.Enums.Weather;
-import com.example.Model.Planet;
-import com.example.Model.SolarSystem;
-import com.example.Services.WeatherInformationService;
+import com.challenge.Model.Enums.MotionRotationalDirection;
+import com.challenge.Model.Enums.Weather;
+import com.challenge.Model.Planet;
+import com.challenge.Model.SolarSystem;
+import com.challenge.Services.WeatherInformationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 

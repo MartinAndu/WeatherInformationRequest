@@ -1,9 +1,7 @@
-package com.example.Model;
+package com.challenge.Model;
 
 
-import com.example.Model.Enums.MotionRotationalDirection;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.challenge.Model.Enums.MotionRotationalDirection;
 
 public class Planet {
 

@@ -1,12 +1,11 @@
-package com.example.Services;
+package com.challenge.Services;
 
-import com.example.Model.Enums.Weather;
-import com.example.Model.Enums.Allignment;
-import com.example.Model.Planet;
+import com.challenge.Model.Enums.Weather;
+import com.challenge.Model.Enums.Allignment;
+import com.challenge.Model.Planet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

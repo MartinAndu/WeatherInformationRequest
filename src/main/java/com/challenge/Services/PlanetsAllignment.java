@@ -1,12 +1,8 @@
-package com.example.Services;
+package com.challenge.Services;
 
 
-import com.example.Model.SolarSystem;
-import com.example.Model.Position;
+import com.challenge.Model.Position;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class PlanetsAllignment implements GeometricCalculator {

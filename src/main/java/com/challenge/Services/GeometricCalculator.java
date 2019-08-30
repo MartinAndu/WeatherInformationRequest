@@ -1,14 +1,14 @@
 
-package com.example.Services;
+package com.challenge.Services;
 
-import com.example.Model.Enums.Allignment;
-import java.util.ArrayList;
+import com.challenge.Model.Enums.Allignment;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.Model.Enums.MotionRotationalDirection;
-import com.example.Model.Planet;
-import com.example.Model.Position;
+import com.challenge.Model.Enums.MotionRotationalDirection;
+import com.challenge.Model.Planet;
+import com.challenge.Model.Position;
 import org.springframework.stereotype.Service;
 
 
@@ -27,7 +27,7 @@ public interface GeometricCalculator {
 			// If these points are already colinear, I just need to check out
 			// if any of these are colinear with the sun itself as a planet
 
-			Planet Sun = new Planet("Sun",0, MotionRotationalDirection.CLOCKWISE, 90, 0);
+			Planet Sun = new Planet("Sun",1, MotionRotationalDirection.CLOCKWISE, 90, 0);
 			if (PlanetsAllignment.arePointsColinear(Sun.getPosition(0), positions.get(0), positions.get(1))) {
 				return Allignment.PLANETS_ALLIGNED_WITH_SUN;
 			}

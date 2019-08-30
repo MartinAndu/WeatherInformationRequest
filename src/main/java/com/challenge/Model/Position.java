@@ -1,4 +1,4 @@
-package com.example.Model;
+package com.challenge.Model;
 
 import org.springframework.stereotype.Component;
 

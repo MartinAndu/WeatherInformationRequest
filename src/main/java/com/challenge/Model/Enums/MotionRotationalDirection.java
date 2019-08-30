@@ -1,4 +1,4 @@
-package com.example.Model.Enums;
+package com.challenge.Model.Enums;
 
 
 
