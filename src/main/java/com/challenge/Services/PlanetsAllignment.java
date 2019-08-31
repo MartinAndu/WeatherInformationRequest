@@ -9,9 +9,8 @@ public class PlanetsAllignment implements GeometricCalculator {
 	
 	PlanetsAllignment() {}
 
+
 	public static boolean arePointsColinear(Position vulcanos, Position ferengis, Position besaoides) {
-		
-		boolean inLine = true;
 
 		double slopeA,slopeB;
 
@@ -30,7 +29,7 @@ public class PlanetsAllignment implements GeometricCalculator {
 		slopeA = (ferengis.getCoordinateY() - vulcanos.getCoordinateY()) * ( besaoides.getCoordinateX() - ferengis.getCoordinateX()) ;
 		slopeB = (besaoides.getCoordinateY() - ferengis.getCoordinateY()) * ( ferengis.getCoordinateX() - vulcanos.getCoordinateX()) ;
 
-		return slopeA - slopeB == 0;
+		return slopeA - slopeB <= 1.2e-12;
 	}
 
 }

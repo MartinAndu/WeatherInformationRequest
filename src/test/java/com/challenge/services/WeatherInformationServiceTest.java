@@ -36,8 +36,14 @@ public class WeatherInformationServiceTest {
 
 
     @Test
-    public void PlanetsAllignedTest() {
-        assertEquals(weatherInformationService.getWeatherOnDay(0), Weather.OPTIMAL);
+    public void PlanetsAllignedTestInitial() {
+        assertEquals(weatherInformationService.getWeatherOnDay(90), Weather.DROUGHNESS);
     }
+
+    @Test
+    public void PlanetsAllignedTestIntersectionExcludingSun() {
+        assertEquals(weatherInformationService.getWeatherOnDay(180), Weather.OPTIMAL);
+    }
+
 
 }

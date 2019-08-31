@@ -22,8 +22,8 @@ public class WeatherInformationService {
 		this.planets = planets;
 		this.weatherCondition = new HashMap<Allignment, Weather>();
 		weatherCondition.put(Allignment.NO_ALLIGNMENT, Weather.NO_INFORMATION);
-		weatherCondition.put(Allignment.PLANETS_ALLIGNED, Weather.DROUGHNESS);
-		weatherCondition.put(Allignment.PLANETS_ALLIGNED_WITH_SUN, Weather.OPTIMAL);
+		weatherCondition.put(Allignment.PLANETS_ALLIGNED, Weather.OPTIMAL);
+		weatherCondition.put(Allignment.PLANETS_ALLIGNED_WITH_SUN, Weather.DROUGHNESS);
 		weatherCondition.put(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, Weather.RAINY);
 
 	}
