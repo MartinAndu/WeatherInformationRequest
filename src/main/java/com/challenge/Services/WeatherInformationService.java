@@ -29,7 +29,7 @@ public class WeatherInformationService {
 	}
 
 	public Weather getWeatherOnDay(int day) {
-		return weatherCondition.get(GeometricCalculator.getGeometricResult(planets, day));
+		return weatherCondition.get(GeometricRequest.getGeometricResult(planets, day));
 	}
 
 }

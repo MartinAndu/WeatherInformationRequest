@@ -5,7 +5,7 @@ import com.challenge.Model.Position;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PlanetsAllignment implements GeometricCalculator {
+public class PlanetsAllignment  {
 	
 	PlanetsAllignment() {}
 
