@@ -1,9 +1,11 @@
 package com.challenge.services;
 
+import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.Enums.MotionRotationalDirection;
 import com.challenge.Model.Enums.Weather;
 import com.challenge.Model.Planet;
 import com.challenge.Model.SolarSystem;
+import com.challenge.Services.GeometricRequest;
 import com.challenge.Services.WeatherInformationService;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,28 +23,26 @@ public class WeatherInformationServiceTest {
     @Autowired
     protected SolarSystem solarSystem;
 
-    @Autowired
-    private WeatherInformationService weatherInformationService;
-
-
     @Before
     public void setup() {
-        solarSystem.addPlanet(new Planet("Pluton", 5000, MotionRotationalDirection.CLOCKWISE, 90,1));
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90,1));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90,3));
-        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90,1));
-
-        weatherInformationService = new WeatherInformationService(solarSystem.getPlanets());
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90,5));
     }
 
+    @Test
+    public void PlanetsAllignedWithTest() {
+        assertEquals(GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 0), Allignment.PLANETS_ALLIGNED_WITH_SUN);
+    }
 
     @Test
-    public void PlanetsAllignedTestInitial() {
-        assertEquals(weatherInformationService.getWeatherOnDay(90), Weather.DROUGHNESS);
+    public void PlanetsAllignedWithoutSunTest() {
+        assertEquals(GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 17), Allignment.PLANETS_ALLIGNED);
     }
 
     @Test
     public void PlanetsAllignedTestIntersectionExcludingSun() {
-        assertEquals(weatherInformationService.getWeatherOnDay(180), Weather.OPTIMAL);
+        assertEquals(GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 180), Weather.DROUGHNESS);
     }
 
 

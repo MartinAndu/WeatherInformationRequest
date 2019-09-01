@@ -9,7 +9,6 @@ public class SolarSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SolarSystemApplication.class, args);
-
 	}
 
 }

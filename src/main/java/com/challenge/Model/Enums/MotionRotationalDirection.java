@@ -1,19 +1,32 @@
 package com.challenge.Model.Enums;
 
 
+import java.util.HashMap;
+import java.util.Map;
 
 public enum MotionRotationalDirection {
-	CLOCKWISE(1),COUNTERCLOCKWISE(-1);
+	CLOCKWISE(1),
+	COUNTERCLOCKWISE(-1);
 
-	private final int value;
 
-	MotionRotationalDirection(int value) {
-		this.value = value;
+	/*
+		Initialization on demand holder idiom ( lazy-loaded singleton pattern)
+		To get a value from enum. The JVM doesn't initialize LazyHolder until
+		is executed by getValue();
+	 */
+	private static class LazyHolder {
+		 static Map<Integer, MotionRotationalDirection> mapDirection = new HashMap();
 	}
-/*
-	public static Optional<MotionRotationalDirection> valueOf(int value) {
-		return Arrays.stream(values())
-					.filter( orientation -> orientation.value == value)
-					.findFirst();
-	}*/
+
+	private final Integer value;
+
+	MotionRotationalDirection(Integer value) {
+		this.value = value;
+		LazyHolder.mapDirection.put(value, this);
+	}
+
+	public Integer getValue() {
+		return this.value;
+	}
+
 }

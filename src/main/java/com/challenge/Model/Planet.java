@@ -7,13 +7,13 @@ public class Planet {
 
 	private String name;
 
-	private double distanceToSun;
+	private Double distanceToSun;
 
 	private Position position;
 
-	private double initialAngle;
+	private Double initialAngle;
 
-	private double angularVelocity;
+	private Double angularVelocity;
 
 	private MotionRotationalDirection motionRotationalDirection;
 
@@ -26,7 +26,7 @@ public class Planet {
 	}
 
 	public Position getPosition(int day) {
-		double angle = Math.toRadians(this.initialAngle + angularVelocity * day);
+		double angle = Math.toRadians(this.initialAngle + angularVelocity * day * this.motionRotationalDirection.getValue());
 		double coordinateX = Math.cos(angle) * this.distanceToSun;
 		double coordinateY = Math.sin(angle) * this.distanceToSun;
 		return new Position(coordinateX, coordinateY);

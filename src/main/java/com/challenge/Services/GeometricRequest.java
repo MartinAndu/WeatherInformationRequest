@@ -17,6 +17,7 @@ public class GeometricRequest {
 
 	public static Allignment getGeometricResult(List<Planet> planets, int day) {
 		GeometricEvaluator geometricEvaluator = new LineEvaluator();
+		geometricEvaluator.linkWith(new TriangleEvaluator());
 
 		return geometricEvaluator.evaluate(planets, day);
 	}

@@ -32,4 +32,10 @@ public class WeatherInformationService {
 		return weatherCondition.get(GeometricRequest.getGeometricResult(planets, day));
 	}
 
+	public void orbitAroundTheSun(int amountOfDays) {
+		for (int i = 0; i < amountOfDays; i++) {
+			System.out.println();
+		}
+	}
+
 }
