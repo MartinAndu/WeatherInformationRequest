@@ -21,13 +21,12 @@ public class SolarSystem {
 		this.planets.add(planet);
 	}
 
+	public void setPlanets(List<Planet> planets) {
+		this.planets = planets;
+	}
+
 	public List<Planet> getPlanets() {
 		return this.planets;
 	}
 
-	public Weather getWeatherOnDay(int day) {
-		WeatherInformationService weather = new WeatherInformationService(planets);
-
-		return weather.getWeatherOnDay(day);
-	}
 }

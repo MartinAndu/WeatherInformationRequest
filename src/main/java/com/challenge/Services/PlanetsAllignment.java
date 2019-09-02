@@ -4,6 +4,8 @@ package com.challenge.Services;
 import com.challenge.Model.Position;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class PlanetsAllignment  {
 	
@@ -18,7 +20,7 @@ public class PlanetsAllignment  {
 			Formula to determine whether three points are collinear comparing
 			the slopes formed with the following points:
 
-			y2 - y1 / x2 - x1  ==  y3 - y2 / x3 - x2 
+			y3 - y2 / x3 - x2 == y2 - y1 / x2 - x1
 
 			hence
 
@@ -26,10 +28,10 @@ public class PlanetsAllignment  {
 
 			We are assuming that we'll always have three points.
 		*/
-		slopeA = (position2.getCoordinateY() - position1.getCoordinateY()) * ( position3.getCoordinateX() - position2.getCoordinateX());
-		slopeB = (position3.getCoordinateY() - position2.getCoordinateY()) * ( position2.getCoordinateX() - position1.getCoordinateX());
+		slopeA = (position3.getCoordinateY() - position2.getCoordinateY()) * ( position2.getCoordinateX() - position1.getCoordinateX());
+		slopeB = (position2.getCoordinateY() - position1.getCoordinateY()) * ( position3.getCoordinateX() - position2.getCoordinateX());
 
-		return Math.abs(slopeA - slopeB) <= 1.2e-12;
+		return Math.abs(BigDecimal.valueOf(slopeA).subtract(BigDecimal.valueOf(slopeB)).doubleValue()) <= 1.2e-5;
 	}
 
 }

@@ -2,11 +2,9 @@ package com.challenge.services;
 
 import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.Enums.MotionRotationalDirection;
-import com.challenge.Model.Enums.Weather;
 import com.challenge.Model.Planet;
 import com.challenge.Model.SolarSystem;
 import com.challenge.Services.GeometricRequest;
-import com.challenge.Services.WeatherInformationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WeatherInformationServiceTest {
+public class PlanetsTriangleTest {
 
     @Autowired
     protected SolarSystem solarSystem;
@@ -38,24 +36,11 @@ public class WeatherInformationServiceTest {
 
     @Test
     public void PlanetsAllignedWithTest() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 0));
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 3577));
     }
 
     @Test
-    public void PlanetsAllignedWithoutSunTest() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 1));
+    public void PlanetsAllignedWithMaxPerimeterTest() {
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 2992));
     }
-
-    @Test
-    public void PlanetsAllignedTestIntersectionExcludingSun() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 180));
-    }
-    @Test
-    public void PlanetsAllignedRainTest() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 89));
-    }
-
-
-
-
 }

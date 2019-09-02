@@ -7,17 +7,17 @@ public class Planet {
 
 	private String name;
 
-	private Double distanceToSun;
+	private Integer distanceToSun;
 
 	private Position position;
 
-	private Double initialAngle;
+	private static Double initialAngle;
 
 	private Double angularVelocity;
 
 	private MotionRotationalDirection motionRotationalDirection;
 
-	public Planet(String name, double distanceToSun, MotionRotationalDirection motionRotationalDirection, double initialAngle, double angularVelocity) {
+	public Planet(String name, Integer distanceToSun, MotionRotationalDirection motionRotationalDirection, Double initialAngle, Double angularVelocity) {
 		this.name = name;
 		this.distanceToSun = distanceToSun;
 		this.initialAngle = initialAngle;
@@ -26,9 +26,11 @@ public class Planet {
 	}
 
 	public Position getPosition(int day) {
-		double angle = Math.toRadians(this.initialAngle + angularVelocity * day * this.motionRotationalDirection.getValue());
-		double coordinateX = Math.cos(angle) * this.distanceToSun;
-		double coordinateY = Math.sin(angle) * this.distanceToSun;
+		// The convention concerning languages ( Java in this case) , indicates that
+		// 0 radians is to the right, therefore, increasing angles will
+		Double angle = Math.toRadians(this.motionRotationalDirection.getValue() * angularVelocity * day);
+		Double coordinateX = Math.cos(angle) * this.distanceToSun;
+		Double coordinateY = Math.sin(angle) * this.distanceToSun;
 		return new Position(coordinateX, coordinateY);
 	}
 

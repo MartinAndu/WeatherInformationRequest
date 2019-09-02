@@ -5,28 +5,28 @@ import org.springframework.stereotype.Component;
 public class Position {
 
 
-	private double coordinateX;
+	private Double coordinateX;
 	
-	private double coordinateY;
+	private Double coordinateY;
 
-	public Position(double coordinateX, double coordinateY) {
+	public Position(Double coordinateX, Double coordinateY) {
 			this.coordinateX = coordinateX;
 			this.coordinateY = coordinateY;
 	}
 
-	public double getCoordinateX() {
+	public Double getCoordinateX() {
 		return this.coordinateX;
 	}
 
-	public double getCoordinateY() {
+	public Double getCoordinateY() {
 		return this.coordinateY;
 	}
 
-	public void setCoordinateX(double coordinateX) {
+	public void setCoordinateX(Double coordinateX) {
 		this.coordinateX = coordinateX;
 	}
 
-	public void setCoordinateY(double coordinateY) {
+	public void setCoordinateY(Double coordinateY) {
 		this.coordinateY = coordinateY;
 	}
 

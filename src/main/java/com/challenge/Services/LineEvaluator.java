@@ -24,7 +24,7 @@ public class LineEvaluator extends GeometricEvaluator {
             // if any of these are colinear with the sun itself as a position.
 
             // Sun position
-            Position centerPosition = new Position(0, 0);
+            Position centerPosition = new Position(0.00, 0.00);
 
             if (PlanetsAllignment.arePointsColinear(centerPosition, positions.get(0), positions.get(1))) {
                 return Allignment.PLANETS_ALLIGNED_WITH_SUN;
@@ -35,3 +35,4 @@ public class LineEvaluator extends GeometricEvaluator {
         return  this.evaluateNext(planets, day);
     }
 }
+
