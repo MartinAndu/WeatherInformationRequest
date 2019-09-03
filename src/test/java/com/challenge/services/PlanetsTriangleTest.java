@@ -29,18 +29,20 @@ public class PlanetsTriangleTest {
         solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,3.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));
-//        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90,1));
-//        solarSystem.addPlanet(new Planet("Betasoide", 500, MotionRotationalDirection.CLOCKWISE, 90,1));
-//        solarSystem.addPlanet(new Planet("Vulcano", 500, MotionRotationalDirection.CLOCKWISE, 90,1));
+    }
+
+    @Test
+    public void PlanetsAllignedWithTestNormalRain() {
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 3580));
     }
 
     @Test
     public void PlanetsAllignedWithTest() {
-        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 3577));
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, GeometricRequest.getGeometricResult(solarSystem, 3577));
     }
 
     @Test
     public void PlanetsAllignedWithMaxPerimeterTest() {
-        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 2992));
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, GeometricRequest.getGeometricResult(solarSystem, 2992));
     }
 }

@@ -1,7 +1,8 @@
-package com.challenge.Services;
+package com.challenge.Services.Evaluator;
 
 import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.Planet;
+import com.challenge.Model.SolarSystem;
 
 import java.util.List;
 
@@ -24,16 +25,16 @@ public abstract class GeometricEvaluator {
     /*
         Returns type of geometric result
      */
-    public abstract Allignment evaluate(List<Planet> planets, int day);
+    public abstract Allignment evaluate(SolarSystem solarSystem, int day);
 
     /*
         Evaluates next object of the chain
     */
-    protected Allignment evaluateNext(List<Planet> planets, int day) {
+    protected Allignment evaluateNext(SolarSystem solarSystem, int day) {
         if (this.nextEvaluator == null) {
             return Allignment.NO_ALLIGNMENT;
         }
-        return nextEvaluator.evaluate(planets, day);
+        return nextEvaluator.evaluate(solarSystem, day);
     }
 
 }

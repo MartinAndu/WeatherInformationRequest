@@ -32,6 +32,6 @@ public class ApplicationRunner {
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,3.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));
 
-        weatherInformationService.orbitAroundTheSun(solarSystem.getPlanets(), AMOUNT_OF_DAYS);
+        weatherInformationService.orbitAroundTheSun(solarSystem, AMOUNT_OF_DAYS);
     }
 }

@@ -38,21 +38,21 @@ public class WeatherInformationServiceTest {
 
     @Test
     public void PlanetsAllignedWithTest() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 0));
+        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 0));
     }
 
     @Test
     public void PlanetsAllignedWithoutSunTest() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 1));
+        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 1));
     }
 
     @Test
     public void PlanetsAllignedTestIntersectionExcludingSun() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 180));
+        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 180));
     }
     @Test
     public void PlanetsAllignedRainTest() {
-        assertEquals(Allignment.PLANETS_ALLIGNED_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem.getPlanets(), 89));
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 89));
     }
 
 

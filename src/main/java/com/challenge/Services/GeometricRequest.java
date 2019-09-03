@@ -4,22 +4,25 @@ package com.challenge.Services;
 import com.challenge.Model.Enums.Allignment;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.challenge.Model.Enums.MotionRotationalDirection;
 import com.challenge.Model.Planet;
-import com.challenge.Model.Position;
+import com.challenge.Model.SolarSystem;
+import com.challenge.Services.Evaluator.AngleChangeEvaluator;
+import com.challenge.Services.Evaluator.GeometricEvaluator;
+import com.challenge.Services.Evaluator.LineEvaluator;
+import com.challenge.Services.Evaluator.TriangleEvaluator;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class GeometricRequest {
 
-	public static Allignment getGeometricResult(List<Planet> planets, int day) {
+	public static Allignment getGeometricResult(SolarSystem solarSystem, int day) {
 		GeometricEvaluator geometricEvaluator = new LineEvaluator();
 		geometricEvaluator.linkWith(new TriangleEvaluator());
+		geometricEvaluator.linkWith(new AngleChangeEvaluator());
 
-		return geometricEvaluator.evaluate(planets, day);
+		return geometricEvaluator.evaluate(solarSystem, day);
 	}
 	
 }

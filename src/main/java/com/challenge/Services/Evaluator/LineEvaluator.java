@@ -1,9 +1,12 @@
-package com.challenge.Services;
+package com.challenge.Services.Evaluator;
 
 
 import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.Planet;
 import com.challenge.Model.Position;
+import com.challenge.Model.SolarSystem;
+import com.challenge.Services.Evaluator.GeometricEvaluator;
+import com.challenge.Services.PlanetsAllignment;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,12 +14,12 @@ import java.util.stream.Collectors;
 public class LineEvaluator extends GeometricEvaluator {
 
     @Override
-    public Allignment evaluate(List<Planet> planets, int day) {
+    public Allignment evaluate(SolarSystem solarSystem, int day) {
 
         // I assume I'm getting three planets as a parameter
 
         // Getting positions from each planet.
-        List<Position> positions = planets.stream().map(x -> x.getPosition(day)).collect(Collectors.toList());
+        List<Position> positions = solarSystem.getPositionOnDay(day);
 
         if (PlanetsAllignment.arePointsColinear(positions.get(0), positions.get(1), positions.get(2))) {
             // At this point, I've already proved that the points are colinear
@@ -32,7 +35,7 @@ public class LineEvaluator extends GeometricEvaluator {
             return Allignment.PLANETS_ALLIGNED;
         }
 
-        return  this.evaluateNext(planets, day);
+        return  this.evaluateNext(solarSystem, day);
     }
 }
 
