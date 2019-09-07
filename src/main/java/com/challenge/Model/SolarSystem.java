@@ -1,7 +1,5 @@
 package com.challenge.Model;
 
-import com.challenge.Services.WeatherInformationService;
-import com.challenge.Model.Enums.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

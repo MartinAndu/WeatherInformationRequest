@@ -21,15 +21,15 @@ public class LineEvaluator extends GeometricEvaluator {
         // Getting positions from each planet.
         List<Position> positions = solarSystem.getPositionOnDay(day);
 
-        if (PlanetsAllignment.arePointsColinear(positions.get(0), positions.get(1), positions.get(2))) {
+        if (PlanetsAllignment.arePointsColinear(positions)) {
             // At this point, I've already proved that the points are colinear
             // If these points are already colinear, I just need to check out
             // if any of these are colinear with the sun itself as a position.
 
             // Sun position
             Position centerPosition = new Position(0.00, 0.00);
-
-            if (PlanetsAllignment.arePointsColinear(centerPosition, positions.get(0), positions.get(1))) {
+            positions.set(0, centerPosition);
+            if (PlanetsAllignment.arePointsColinear(positions)) {
                 return Allignment.PLANETS_ALLIGNED_WITH_SUN;
             }
             return Allignment.PLANETS_ALLIGNED;

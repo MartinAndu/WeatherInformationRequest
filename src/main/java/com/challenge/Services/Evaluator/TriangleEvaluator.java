@@ -20,7 +20,7 @@ public class TriangleEvaluator extends GeometricEvaluator {
             List<Position> previousPositions = solarSystem.getPositionOnDay(day - 1);
             List<Position> nextPositions = solarSystem.getPositionOnDay(day + 1);
 
-            // There's a peak in every rainy season . To reach that limit, We've got to compare the perimeter among
+            // There's a peak in every rain season . To reach that limit, We've got to compare the perimeter among
             // the previous day and the next day.
             Double currentArea = PlanetsTriangle.calculateArea(currentPositions);
             if (currentArea > PlanetsTriangle.calculateArea(previousPositions) && currentArea > PlanetsTriangle.calculateArea(nextPositions)) {

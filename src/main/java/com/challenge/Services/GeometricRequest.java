@@ -19,8 +19,8 @@ public class GeometricRequest {
 
 	public static Allignment getGeometricResult(SolarSystem solarSystem, int day) {
 		GeometricEvaluator geometricEvaluator = new LineEvaluator();
-		geometricEvaluator.linkWith(new TriangleEvaluator());
-		geometricEvaluator.linkWith(new AngleChangeEvaluator());
+		geometricEvaluator.linkWith(new TriangleEvaluator())
+						  .linkWith(new AngleChangeEvaluator());
 
 		return geometricEvaluator.evaluate(solarSystem, day);
 	}

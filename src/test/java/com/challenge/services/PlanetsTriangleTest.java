@@ -32,8 +32,14 @@ public class PlanetsTriangleTest {
     }
 
     @Test
+    public void PlanetsAllignedWithTestNoRain() {
+        assertEquals(Allignment.NO_ALLIGNMENT, GeometricRequest.getGeometricResult(solarSystem, 1));
+    }
+
+
+    @Test
     public void PlanetsAllignedWithTestNormalRain() {
-        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 3580));
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 645));
     }
 
     @Test
