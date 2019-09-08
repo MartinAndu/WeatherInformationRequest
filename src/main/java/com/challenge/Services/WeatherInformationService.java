@@ -1,8 +1,10 @@
 package com.challenge.Services;
 
+import com.challenge.DTOs.WeatherReportDTO;
 import com.challenge.Helpers.GeometricRequest;
 import com.challenge.Model.Enums.Weather;
 import com.challenge.Model.Enums.Allignment;
+import com.challenge.Model.Report.WeatherReport;
 import com.challenge.Model.SolarSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,17 +36,20 @@ public class WeatherInformationService {
 
 	public void orbitAroundTheSun(SolarSystem solarSystem, int amountOfDays) {
 
-		// TODO: use a constant for rotation limit
+		WeatherReport weatherReport = new WeatherReport();
+
+		LOGGER.info("Planets orbiting around the sun");
+
 		for (int day = 0; day < amountOfDays; day++) {
-			LOGGER.info("Clima para día: {} ", day);
-			LOGGER.info("Tipo de Clima es : {} ", getWeatherOnDay(solarSystem, day));
+			// Gets the weather on this day and then
+			// updates the report with this information.
+			Weather weather = weatherCondition.get(GeometricRequest.getGeometricResult(solarSystem, day));
+			weatherReport.setStrategy(weather);
+			weatherReport.updateReport(day);
 		}
-	}
 
-	private Weather getWeatherOnDay(SolarSystem solarSystem, int day) {
-		Weather weatherReported = weatherCondition.get(GeometricRequest.getGeometricResult(solarSystem, day));
-
-		return weatherReported;
+		LOGGER.info("Persisting data to database using H2");
+		weatherReport.saveInfoToDatabase();
 	}
 
 }
