@@ -17,6 +17,8 @@ public class Planet {
 
 	private MotionRotationalDirection motionRotationalDirection;
 
+	//TODO: Cambiar esto de pasarle el ángulo inicial porque va a ser el mismo para todos los planetas
+	//TODO: Fijarse si hace falta pasar las posiciones como Double.
 	public Planet(String name, Integer distanceToSun, MotionRotationalDirection motionRotationalDirection, Double initialAngle, Double angularVelocity) {
 		this.name = name;
 		this.distanceToSun = distanceToSun;

@@ -1,4 +1,4 @@
-package com.challenge.forecastRunner;
+package com.challenge.ForecastRunner;
 
 import com.challenge.Model.Enums.MotionRotationalDirection;
 import com.challenge.Model.Planet;
@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 
 @Component
 public class ApplicationRunner {
 
-    final private static Integer AMOUNT_OF_DAYS = 360;
+    final private static Integer AMOUNT_OF_DAYS = 3600;
 
 
     private WeatherInformationService weatherInformationService;
@@ -34,4 +33,5 @@ public class ApplicationRunner {
 
         weatherInformationService.orbitAroundTheSun(solarSystem, AMOUNT_OF_DAYS);
     }
+
 }

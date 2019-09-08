@@ -21,12 +21,9 @@ public class WeatherInformationService {
 
 	private Map<Allignment, Weather> weatherCondition;
 
-	private Weather lastSeasonWeather;
-
 	@Autowired
 	public WeatherInformationService() {
 		this.weatherCondition = new HashMap<>();
-		this.lastSeasonWeather = Weather.NO_INFORMATION;
 		weatherCondition.put(Allignment.NO_ALLIGNMENT, Weather.NO_INFORMATION);
 		weatherCondition.put(Allignment.PLANETS_ALLIGNED, Weather.OPTIMAL);
 		weatherCondition.put(Allignment.PLANETS_ALLIGNED_WITH_SUN, Weather.DROUGHNESS);

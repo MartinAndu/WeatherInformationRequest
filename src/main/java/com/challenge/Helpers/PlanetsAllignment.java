@@ -53,7 +53,7 @@ public class PlanetsAllignment  {
 		Double currentFinalAngle = calculateTotalAngle(currentPositions);
 		Double previousFinalAngle = calculateTotalAngle(previousPositions);
 
-//		return currentFinalAngle < previousFinalAngle;
+		// TODO: avoid using arePointsColinear, try something else.
 		return (previousFinalAngle  > DECIMAL_THRESHOLD && currentFinalAngle < DECIMAL_THRESHOLD) || ( previousFinalAngle < DECIMAL_THRESHOLD && currentFinalAngle > DECIMAL_THRESHOLD) && !arePointsColinear(previousPositions);
 	}
 
