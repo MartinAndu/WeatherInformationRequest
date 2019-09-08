@@ -1,16 +1,13 @@
 
-package com.challenge.Services;
+package com.challenge.Helpers;
 
 import com.challenge.Model.Enums.Allignment;
 
-import java.util.List;
-
-import com.challenge.Model.Planet;
 import com.challenge.Model.SolarSystem;
-import com.challenge.Services.Evaluator.AngleChangeEvaluator;
-import com.challenge.Services.Evaluator.GeometricEvaluator;
-import com.challenge.Services.Evaluator.LineEvaluator;
-import com.challenge.Services.Evaluator.TriangleEvaluator;
+import com.challenge.Evaluator.AngleChangeEvaluator;
+import com.challenge.Evaluator.GeometricEvaluator;
+import com.challenge.Evaluator.LineEvaluator;
+import com.challenge.Evaluator.TriangleEvaluator;
 import org.springframework.stereotype.Service;
 
 

@@ -1,8 +1,11 @@
-package com.challenge.Services;
+package com.challenge.Helpers;
 
 
 import com.challenge.Model.Position;
 import com.challenge.Model.SolarSystem;
+import com.challenge.Services.WeatherInformationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.awt.geom.Line2D;
@@ -14,8 +17,12 @@ import java.util.stream.IntStream;
 
 @Service
 public class PlanetsAllignment  {
-	
-	PlanetsAllignment() {}
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeatherInformationService.class);
+
+    private static final Double DECIMAL_THRESHOLD = 1.2e-5;
+
+    PlanetsAllignment() {}
 
 
 	public static boolean arePointsColinear(List<Position> positions) {
@@ -29,27 +36,7 @@ public class PlanetsAllignment  {
 		double distance = line.ptLineDist(positions.get(2).getCoordinateX(),
 				positions.get(2).getCoordinateY());
 
-		return Math.abs(distance) <=  1.2e-5;
-//
-//		/*
-//			double slopeA,slopeB;
-//			Formula to determine whether three points are collinear comparing
-//			the slopes formed with the following points:
-//
-//			y3 - y2 / x3 - x2 == y2 - y1 / x2 - x1
-//
-//			hence
-//
-//			(y2 - y1) * (x3 - x2) - (y3 - y2) * (x2 - x1) == 0
-//
-//			We are assuming that we'll always have three points.
-//		*/
-//		slopeA = Math.round((position2.getCoordinateY() - position1.getCoordinateY()) * ( position3.getCoordinateX() - position2.getCoordinateX()));
-//		slopeB = Math.round((position3.getCoordinateY() - position2.getCoordinateY()) * ( position2.getCoordinateX() - position1.getCoordinateX()));
-//
-//		// TODO : change equation and use a const for 1.2e-5
-//		return Math.abs(BigDecimal.valueOf(slopeA).subtract(BigDecimal.valueOf(slopeB)).doubleValue()) <= 1.2e-5;
-////		return Math.abs(BigDecimal.valueOf(slopeA).subtract(BigDecimal.valueOf(slopeB)).doubleValue()) <= 1.2e-5;
+		return Math.abs(distance) <=  DECIMAL_THRESHOLD;
 	}
 
 	public static boolean planetAllignmentTransition(SolarSystem solarSystem, int day) {
@@ -67,7 +54,7 @@ public class PlanetsAllignment  {
 		Double previousFinalAngle = calculateTotalAngle(previousPositions);
 
 //		return currentFinalAngle < previousFinalAngle;
-		return (previousFinalAngle  >= 0 && currentFinalAngle <= 0) || ( previousFinalAngle <= 0 && currentFinalAngle >= 0);
+		return (previousFinalAngle  > DECIMAL_THRESHOLD && currentFinalAngle < DECIMAL_THRESHOLD) || ( previousFinalAngle < DECIMAL_THRESHOLD && currentFinalAngle > DECIMAL_THRESHOLD) && !arePointsColinear(previousPositions);
 	}
 
 	private static Double calculateTotalAngle(List<Position> position) {

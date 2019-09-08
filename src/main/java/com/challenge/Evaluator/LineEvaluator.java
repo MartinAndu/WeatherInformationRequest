@@ -1,15 +1,12 @@
-package com.challenge.Services.Evaluator;
+package com.challenge.Evaluator;
 
 
 import com.challenge.Model.Enums.Allignment;
-import com.challenge.Model.Planet;
 import com.challenge.Model.Position;
 import com.challenge.Model.SolarSystem;
-import com.challenge.Services.Evaluator.GeometricEvaluator;
-import com.challenge.Services.PlanetsAllignment;
+import com.challenge.Helpers.PlanetsAllignment;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LineEvaluator extends GeometricEvaluator {
 

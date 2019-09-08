@@ -1,8 +1,8 @@
-package com.challenge.Services.Evaluator;
+package com.challenge.Evaluator;
 
 import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.SolarSystem;
-import com.challenge.Services.PlanetsAllignment;
+import com.challenge.Helpers.PlanetsAllignment;
 
 public class AngleChangeEvaluator extends GeometricEvaluator {
 

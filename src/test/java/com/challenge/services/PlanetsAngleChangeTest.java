@@ -1,11 +1,9 @@
 package com.challenge.services;
 
-import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.Enums.MotionRotationalDirection;
 import com.challenge.Model.Planet;
 import com.challenge.Model.SolarSystem;
-import com.challenge.Services.GeometricRequest;
-import com.challenge.Services.PlanetsAllignment;
+import com.challenge.Helpers.PlanetsAllignment;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,10 +50,19 @@ public class PlanetsAngleChangeTest {
     @Test
     public void PlanetsAllignedWithMinorAngleChanged() {
         solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
-        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,6.0));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
 
-        assertTrue(PlanetsAllignment.planetAllignmentTransition(solarSystem, 1));
+        assertTrue(PlanetsAllignment.planetAllignmentTransition (solarSystem, 73));
+    }
+
+    @Test
+    public void PlanetsAllignedAfterManyRevolutionsAngleChanged() {
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
+        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,3.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));
+
+        assertTrue(PlanetsAllignment.planetAllignmentTransition(solarSystem, 541));
     }
 
 

@@ -1,14 +1,11 @@
-package com.challenge.Services.Evaluator;
+package com.challenge.Evaluator;
 
 import com.challenge.Model.Enums.Allignment;
-import com.challenge.Model.Planet;
 import com.challenge.Model.Position;
 import com.challenge.Model.SolarSystem;
-import com.challenge.Services.Evaluator.GeometricEvaluator;
-import com.challenge.Services.PlanetsTriangle;
+import com.challenge.Helpers.PlanetsTriangle;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TriangleEvaluator extends GeometricEvaluator {
     @Override

@@ -24,10 +24,6 @@ public class SolarSystem {
 		this.planets = planets;
 	}
 
-	public List<Planet> getPlanets() {
-		return this.planets;
-	}
-
 	public List<Position> getPositionOnDay(int day) {
 		return planets.stream().map(x -> x.getPosition(day)).collect(Collectors.toList());
 	}

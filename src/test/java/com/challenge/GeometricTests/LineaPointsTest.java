@@ -2,7 +2,7 @@ package com.challenge.GeometricTests;
 
 
 import com.challenge.Model.Position;
-import com.challenge.Services.PlanetsAllignment;
+import com.challenge.Helpers.PlanetsAllignment;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

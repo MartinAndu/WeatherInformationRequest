@@ -1,5 +1,6 @@
 package com.challenge.Services;
 
+import com.challenge.Helpers.GeometricRequest;
 import com.challenge.Model.Enums.Weather;
 import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.SolarSystem;
@@ -34,24 +35,14 @@ public class WeatherInformationService {
 	public void orbitAroundTheSun(SolarSystem solarSystem, int amountOfDays) {
 
 		// TODO: use a constant for rotation limit
-		for (int day = 0; day < 4000; day++) {
-//			LOGGER.info("Clima para día: " + day);
-//			LOGGER.info("Tipo de Clima es : " + getWeatherOnDay(solarSystem, day));
-			System.out.println(getWeatherOnDay(solarSystem, day) + "," + day);
+		for (int day = 0; day < amountOfDays; day++) {
+			LOGGER.info("Clima para día: {} ", day);
+			LOGGER.info("Tipo de Clima es : {} ", getWeatherOnDay(solarSystem, day));
 		}
 	}
 
 	private Weather getWeatherOnDay(SolarSystem solarSystem, int day) {
 		Weather weatherReported = weatherCondition.get(GeometricRequest.getGeometricResult(solarSystem, day));
-		// In case there was no result, the weather season should be remain the same
-		// until a new weather forecast is published
-
-		// TODO: improve this code
-/*		if ( day > 0 && weatherReported.equals(Weather.NO_INFORMATION)) {
-			weatherReported = this.lastSeasonWeather;
-		} else {
-			this.lastSeasonWeather = weatherReported;
-		}*/
 
 		return weatherReported;
 	}

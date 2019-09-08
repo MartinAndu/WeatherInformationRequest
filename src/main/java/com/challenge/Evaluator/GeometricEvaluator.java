@@ -1,10 +1,7 @@
-package com.challenge.Services.Evaluator;
+package com.challenge.Evaluator;
 
 import com.challenge.Model.Enums.Allignment;
-import com.challenge.Model.Planet;
 import com.challenge.Model.SolarSystem;
-
-import java.util.List;
 
 /*
     Chain of responsibility class used to evaluate every geometric shape

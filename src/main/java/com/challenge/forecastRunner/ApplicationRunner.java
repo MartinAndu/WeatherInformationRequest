@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @Component
 public class ApplicationRunner {
 
-    final private static Integer AMOUNT_OF_DAYS = 360000;
+    final private static Integer AMOUNT_OF_DAYS = 360;
 
 
     private WeatherInformationService weatherInformationService;
