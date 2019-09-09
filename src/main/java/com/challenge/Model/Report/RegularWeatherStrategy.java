@@ -1,13 +1,14 @@
 package com.challenge.Model.Report;
 
-import com.challenge.DTOs.WeatherReportDTO;
 import com.challenge.Model.Enums.Weather;
 
 public class RegularWeatherStrategy implements WeatherReportStrategy {
 
     @Override
-    public void calculateWeatherPeriod(WeatherReportDTO weatherReportDTO) {
-        weatherReportDTO.updateForecast(Weather.NO_INFORMATION);
+    public void calculateWeatherPeriod(ReportResults reportResults) {
+        // When no information about the weather is shown, the planets
+        // keeps their previous weather until a new one comes up.
+        reportResults.updateForecast(reportResults.getLastWeather());
     }
 
     @Override

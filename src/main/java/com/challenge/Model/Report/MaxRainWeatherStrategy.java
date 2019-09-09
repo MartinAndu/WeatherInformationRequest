@@ -1,14 +1,14 @@
 package com.challenge.Model.Report;
 
-import com.challenge.DTOs.WeatherReportDTO;
 import com.challenge.Model.Enums.Weather;
 
 public class MaxRainWeatherStrategy implements WeatherReportStrategy {
 
     @Override
-    public void calculateWeatherPeriod(WeatherReportDTO weatherReportDTO) {
-        weatherReportDTO.updatePeriodAmount(Weather.MAX_RAIN);
-        weatherReportDTO.updateForecast(Weather.MAX_RAIN);
+    public void calculateWeatherPeriod(ReportResults reportResults) {
+        reportResults.updateMaxRainDay();
+        reportResults.updateForecast(Weather.MAX_RAIN);
+        reportResults.setLastWeather(Weather.MAX_RAIN);
     }
 
     @Override
