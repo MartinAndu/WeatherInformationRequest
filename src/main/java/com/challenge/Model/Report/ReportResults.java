@@ -26,6 +26,10 @@ public class ReportResults {
         this.lastWeather = Weather.NO_INFORMATION;
     }
 
+    public List<Integer> getMaxRainDays() {
+        return maxRainDays;
+    }
+
     public void setLastWeather(Weather lastWeather) {
         this.lastWeather = lastWeather;
     }

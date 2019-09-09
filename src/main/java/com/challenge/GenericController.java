@@ -1,7 +1,9 @@
 package com.challenge;
 
 import com.challenge.Model.Response.ForecastResponse;
+import com.challenge.Model.Response.StatisticResponse;
 import com.challenge.Services.interfaces.ForecastService;
+import com.challenge.Services.interfaces.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,9 @@ public class GenericController {
 
     @Autowired
     private  ForecastService forecastService;
+
+    @Autowired
+    private StatisticsService statisticsService;
 
   	// Aggregate root
   	@RequestMapping("/")
@@ -41,6 +46,11 @@ public class GenericController {
     @RequestMapping(value="/report/all", method = RequestMethod.GET)
     public ResponseEntity<List<ForecastResponse>>  getFullReport() {
         return new ResponseEntity<>(forecastService.getFullReport(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/report/statistics", method = RequestMethod.GET)
+    public ResponseEntity<StatisticResponse>  getStatisticsReport() {
+        return new ResponseEntity(statisticsService.getStatistics(), HttpStatus.OK);
     }
 
 

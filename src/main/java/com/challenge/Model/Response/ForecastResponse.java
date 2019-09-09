@@ -5,7 +5,7 @@ public class ForecastResponse {
     private int day;
     private String description;
 
-    ForecastResponse(int day, String description) {
+    public ForecastResponse(int day, String description) {
         this.day = day;
         this.description = description;
     }

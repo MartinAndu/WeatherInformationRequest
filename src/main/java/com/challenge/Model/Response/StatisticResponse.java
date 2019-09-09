@@ -1,23 +1,15 @@
-package com.challenge.Model.Entities;
+package com.challenge.Model.Response;
 
 import com.challenge.Model.Enums.Weather;
 
-import javax.persistence.*;
+import javax.persistence.ElementCollection;
 import java.util.List;
 import java.util.Map;
 
-@Table(name = "statistic")
-@Entity
-public class Statistic {
+public class StatisticResponse {
 
-    @Id
-    @GeneratedValue
-    private int id;
-    
-    @ElementCollection
     private List<Integer> maxRainDays;
 
-    @ElementCollection
     private Map<Weather, Integer> periodAmount;
 
     public List<Integer> getMaxRainDays() {

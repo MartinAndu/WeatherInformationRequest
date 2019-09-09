@@ -2,6 +2,7 @@ package com.challenge.Model.Report;
 
 import com.challenge.Model.Enums.Weather;
 import com.challenge.Services.interfaces.ForecastService;
+import com.challenge.Services.interfaces.StatisticsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class WeatherReport {
 
     @Autowired
     private ForecastService foreCastService;
+
+    @Autowired
+    private StatisticsService statisticsService;
 
 
     public WeatherReport() {
@@ -53,11 +57,11 @@ public class WeatherReport {
     }
 
     public void saveInfoToDatabase() {
+        Map<Weather, Integer> periodAmount = reportResults.getPeriodAmount();
+        periodAmount.forEach( (key, value) -> LOGGER.info("The amount of period of {} is {}",key, value));
 
         // Saves reports on the database.
-        Map<Weather, Integer> periodAmount = reportResults.getPeriodAmount();
-
-        periodAmount.forEach( (key, value) -> LOGGER.info("The amount of period of {} is {}",key, value));
+        statisticsService.saveStatistics(reportResults);
     }
 
 }
