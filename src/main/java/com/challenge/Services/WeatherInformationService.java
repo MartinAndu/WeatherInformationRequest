@@ -1,6 +1,5 @@
 package com.challenge.Services;
 
-import com.challenge.DTOs.WeatherReportDTO;
 import com.challenge.Helpers.GeometricRequest;
 import com.challenge.Model.Enums.Weather;
 import com.challenge.Model.Enums.Allignment;
@@ -19,9 +18,12 @@ public class WeatherInformationService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(WeatherInformationService.class);
 
-	private Map<Allignment, Weather> weatherCondition;
+	private final Map<Allignment, Weather> weatherCondition;
 
 	@Autowired
+	private WeatherReport weatherReport;
+
+
 	public WeatherInformationService() {
 		this.weatherCondition = new HashMap<>();
 		weatherCondition.put(Allignment.NO_ALLIGNMENT, Weather.NO_INFORMATION);
@@ -32,9 +34,6 @@ public class WeatherInformationService {
 	}
 
 	public void orbitAroundTheSun(SolarSystem solarSystem, int amountOfDays) {
-
-		WeatherReport weatherReport = new WeatherReport();
-
 		LOGGER.info("Planets orbiting around the sun");
 
 		for (int day = 0; day < amountOfDays; day++) {

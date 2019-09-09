@@ -1,16 +1,15 @@
 package com.challenge.Model.Report;
 
-import com.challenge.DTOs.WeatherReportDTO;
 import com.challenge.Model.Enums.Weather;
 
 public class RainWeatherStrategy implements WeatherReportStrategy {
     @Override
-    public void calculateWeatherPeriod(WeatherReportDTO weatherReportDTO) {
-        if (!weatherReportDTO.getLastWeather().equals(Weather.RAIN) && !weatherReportDTO.getLastWeather().equals(Weather.MAX_RAIN)) {
-            weatherReportDTO.updatePeriodAmount(Weather.RAIN);
+    public void calculateWeatherPeriod(ReportResults reportResults) {
+        if (!reportResults.getLastWeather().equals(Weather.RAIN) && !reportResults.getLastWeather().equals(Weather.MAX_RAIN)) {
+            reportResults.updatePeriodAmount(Weather.RAIN);
         }
-        weatherReportDTO.updateForecast(Weather.RAIN);
-
+        reportResults.updateForecast(Weather.RAIN);
+        reportResults.setLastWeather(Weather.RAIN);
     }
 
     @Override

@@ -1,29 +1,25 @@
-package com.challenge.DTOs;
+package com.challenge.Model.Report;
 
 import com.challenge.Model.Enums.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class WeatherReportDTO {
+public class ReportResults {
 
     private Weather lastWeather;
 
     private Map<Weather, Integer> periodAmount;
 
-    private List<Weather> forecast;
+    private List<Integer> maxRainDays;
 
+    private List<Weather> forecast;
 
     private int day;
 
-    public WeatherReportDTO() {
+    public ReportResults() {
         this.periodAmount = new HashMap<>();
-        // Initializes periodAmount dictionary by setting each key with a zero value.
-        periodAmount.put(Weather.DROUGHNESS, 0);
-
+        this.maxRainDays = new ArrayList<>();
         this.forecast = new ArrayList<>();
 
         // The last weather as soon as the application is up and running , should be a regular weather.
@@ -48,6 +44,10 @@ public class WeatherReportDTO {
 
     public void updatePeriodAmount(Weather weather) {
         this.periodAmount.merge(weather,1, Integer::sum);
+    }
+
+    public void updateMaxRainDay() {
+        this.maxRainDays.add(this.day);
     }
 
     public void updateForecast(Weather weather) {

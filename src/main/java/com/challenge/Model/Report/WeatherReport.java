@@ -1,26 +1,29 @@
 package com.challenge.Model.Report;
 
-import com.challenge.DTOs.WeatherReportDTO;
 import com.challenge.Model.Enums.Weather;
+import com.challenge.Services.interfaces.ForecastService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
+@Component
 public class WeatherReport {
 
     public final Logger LOGGER = LoggerFactory.getLogger(WeatherReportStrategy.class);
 
     private Map<Weather, WeatherReportStrategy> strategyStrategyDictionary;
 
-    private WeatherReportDTO weatherReportDTO;
+    private ReportResults reportResults;
+
+    private WeatherReportStrategy weatherReportStrategy;
 
     @Autowired
-    WeatherReportStrategy weatherReportStrategy;
+    private ForecastService foreCastService;
+
 
     public WeatherReport() {
         strategyStrategyDictionary = new HashMap<>();
@@ -30,7 +33,7 @@ public class WeatherReport {
         strategyStrategyDictionary.put(Weather.OPTIMAL, new OptimalWeatherStrategy());
         strategyStrategyDictionary.put(Weather.NO_INFORMATION, new RegularWeatherStrategy());
 
-        weatherReportDTO = new WeatherReportDTO();
+        reportResults = new ReportResults();
     }
 
 
@@ -39,25 +42,22 @@ public class WeatherReport {
     }
 
     public void updateReport(int day) {
-        weatherReportDTO.setDay(day);
-        weatherReportStrategy.calculateWeatherPeriod(weatherReportDTO);
-        weatherReportDTO.setLastWeather(weatherReportStrategy.getType());
+        reportResults.setDay(day);
+        weatherReportStrategy.calculateWeatherPeriod(reportResults);
+        saveWeather();
+        LOGGER.info("Forecast System detects {} by day {}", reportResults.getLastWeather() , reportResults.getDay());
+    }
 
-        LOGGER.info("Forecast System detects {} by day {}", weatherReportStrategy.getType() , weatherReportDTO.getDay());
+    private void saveWeather() {
+        foreCastService.saveForecast(reportResults);
     }
 
     public void saveInfoToDatabase() {
-        // Saves reports on the database.
-        List<Weather> forecast = weatherReportDTO.getForecast();
-        Map<Weather, Integer> periodAmount = weatherReportDTO.getPeriodAmount();
-//
-//        IntStream.range(0, forecast.size()).forEach(
-//           day -> {
-//               System.out.println(forecast.get(day) + ", " + day);
-//           }
-//        );
 
-        periodAmount.forEach( (key, value) -> LOGGER.info("The amount of {} is {}",key, value));
+        // Saves reports on the database.
+        Map<Weather, Integer> periodAmount = reportResults.getPeriodAmount();
+
+        periodAmount.forEach( (key, value) -> LOGGER.info("The amount of period of {} is {}",key, value));
     }
 
 }
