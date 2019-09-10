@@ -1,6 +1,8 @@
 package com.challenge.controller;
 
+import com.challenge.exceptions.Messages;
 import com.challenge.exceptions.types.DayNumberException;
+import com.challenge.exceptions.types.InvalidNumberFormatException;
 import com.challenge.model.response.StatisticResponse;
 import com.challenge.services.interfaces.ForecastService;
 import com.challenge.services.interfaces.StatisticsService;
@@ -45,6 +47,9 @@ public class WeatherController {
         } catch (DayNumberException e) {
             LOGGER.error("Getting weather wasn't possible because : {}", e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (InvalidNumberFormatException e) {
+            LOGGER.error("The request parameter is not a valid integer number : {}", e.getMessage());
+            return ResponseEntity.badRequest().body(Messages.NUMBER_FORMAT_EXCEPTION);
         }
   	}
 
