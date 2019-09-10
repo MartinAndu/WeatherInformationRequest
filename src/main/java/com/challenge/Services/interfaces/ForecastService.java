@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public interface ForecastService {
-    Forecast getWeatherByDay(int day);
+    ForecastResponse getWeatherByDay(int day);
     void saveForecast(ReportResults reportResults);
     List<ForecastResponse> getFullReport();
 }

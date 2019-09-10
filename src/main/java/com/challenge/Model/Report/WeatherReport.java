@@ -60,6 +60,8 @@ public class WeatherReport {
         Map<Weather, Integer> periodAmount = reportResults.getPeriodAmount();
         periodAmount.forEach( (key, value) -> LOGGER.info("The amount of period of {} is {}",key, value));
 
+        LOGGER.info("Days with max rain are {}", reportResults.getMaxRainDays());
+
         // Saves reports on the database.
         statisticsService.saveStatistics(reportResults);
     }

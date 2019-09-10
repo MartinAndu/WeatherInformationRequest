@@ -1,5 +1,8 @@
 package com.challenge.Services.impl;
 
+import com.challenge.Exceptions.Messages;
+import com.challenge.Exceptions.types.DayNumberException;
+import com.challenge.Exceptions.validators.DayValidator;
 import com.challenge.Model.Report.ReportResults;
 import com.challenge.Model.Entities.Forecast;
 import com.challenge.Model.Entities.ForecastConverter;
@@ -7,7 +10,6 @@ import com.challenge.Model.Response.ForecastResponse;
 import com.challenge.Repository.ForecastRepository;
 import com.challenge.Services.interfaces.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +22,9 @@ public class ForecastServiceImpl implements ForecastService {
     private ForecastRepository forecastRepository;
 
     @Override
-    public Forecast getWeatherByDay(int day) {
-        return forecastRepository.findByDay(day);
+    public ForecastResponse getWeatherByDay(int day) {
+        if (!DayValidator.ValidateDay(day)) throw new DayNumberException(Messages.DAY_NUMBER_EXCEPTION);
+        return  ForecastConverter.entityToResponse(forecastRepository.findByDay(day));
     }
 
     @Override
