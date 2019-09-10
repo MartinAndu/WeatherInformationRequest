@@ -35,11 +35,11 @@ public class WeatherInformationService {
 		weatherCondition.put(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, Weather.MAX_RAIN);
 	}
 
-	public void orbitAroundTheSun(SolarSystem solarSystem) {
+	public void orbitAroundTheSun(SolarSystem solarSystem, int amountOfDays) {
 		LOGGER.info("Planets orbiting around the sun");
 
 		try {
-			for (int day = 0; day < Consts.AMOUNT_OF_DAYS; day++) {
+			for (int day = 0; day < amountOfDays; day++) {
 				// Gets the weather on this day and then
 				// updates the report with this information.
 				Weather weather = weatherCondition.get(GeometricRequest.getGeometricResult(solarSystem, day));

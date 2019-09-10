@@ -5,6 +5,7 @@ import com.challenge.model.Planet;
 import com.challenge.model.SolarSystem;
 import com.challenge.services.WeatherInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +13,8 @@ import javax.annotation.PostConstruct;
 @Component
 public class ApplicationRunner {
 
-    final private static Integer AMOUNT_OF_DAYS = 3600;
+    @Value("${forecast.amount.days}")
+    private Integer AMOUNT_OF_DAYS;
 
 
     private WeatherInformationService weatherInformationService;
@@ -31,7 +33,7 @@ public class ApplicationRunner {
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,3.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));
 
-        weatherInformationService.orbitAroundTheSun(solarSystem);
+//        weatherInformationService.orbitAroundTheSun(solarSystem, AMOUNT_OF_DAYS);
     }
 
 }

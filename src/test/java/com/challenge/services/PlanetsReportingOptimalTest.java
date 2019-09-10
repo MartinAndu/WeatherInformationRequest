@@ -1,5 +1,7 @@
 package com.challenge.services;
 
+import com.challenge.helpers.GeometricRequest;
+import com.challenge.model.enums.Allignment;
 import com.challenge.model.enums.MotionRotationalDirection;
 import com.challenge.model.Planet;
 import com.challenge.model.SolarSystem;
@@ -37,15 +39,6 @@ public class PlanetsReportingOptimalTest {
         assertTrue(PlanetsAllignment.planetAllignmentTransition(solarSystem, 2));
     }
 
-    @Test
-    public void PlanetsAlignedWithMediumAngleChanged() {
-        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
-        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,180.0));
-        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
-
-        assertTrue(PlanetsAllignment.planetAllignmentTransition(solarSystem, 2));
-    }
-
 
     @Test
     public void PlanetsAlignedWithMinorAngleChanged() {
@@ -62,8 +55,58 @@ public class PlanetsReportingOptimalTest {
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,3.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));
 
-        assertTrue(PlanetsAllignment.planetAllignmentTransition(solarSystem, 541));
+        assertTrue(PlanetsAllignment.planetAllignmentTransition(solarSystem, 488));
     }
 
 
+    @Test
+    public void PlanetsAlignedWithoutSunCounterClockwiseTest() {
+        solarSystem.setPlanets(new ArrayList<>());
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,270.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));
+        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,270.0));
+
+        assertEquals(Allignment.PLANETS_ALLIGNED, GeometricRequest.getGeometricResult(solarSystem, 2));
+    }
+
+    @Test
+    public void PlanetsAlignedWithoutSunCounterClockwiseOnTwoPlanetsTest() {
+        solarSystem.setPlanets(new ArrayList<>());
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
+        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+
+        assertEquals(Allignment.PLANETS_ALLIGNED, GeometricRequest.getGeometricResult(solarSystem, 2));
+    }
+
+    @Test
+    public void PlanetsAlignedWithoutSunCounterClockwiseSecondPlanetTest() {
+        solarSystem.setPlanets(new ArrayList<>());
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,20.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,20.0));
+
+        assertEquals(Allignment.PLANETS_ALLIGNED, GeometricRequest.getGeometricResult(solarSystem, 2));
+    }
+
+
+    @Test
+    public void PlanetsAlignedWithoutSunCounterClockwiseOnTwoFirstPlanetsTest() {
+        solarSystem.setPlanets(new ArrayList<>());
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
+
+        assertEquals(Allignment.PLANETS_ALLIGNED, GeometricRequest.getGeometricResult(solarSystem, 2));
+    }
+
+    @Test
+    public void PlanetsAlignedWithoutSunCounterClockwiseOnTwoLastPlanetsTest() {
+        solarSystem.setPlanets(new ArrayList<>());
+        solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
+        solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+        solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
+
+        assertEquals(Allignment.PLANETS_ALLIGNED, GeometricRequest.getGeometricResult(solarSystem, 3));
+    }
 }

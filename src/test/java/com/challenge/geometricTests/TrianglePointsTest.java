@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -71,5 +72,15 @@ public class TrianglePointsTest {
         List<Position> positions = new ArrayList<>();
 
         assertTrue(PlanetsTriangle.isSunInsideATriangle(positions));
+    }
+
+    @Test
+    public void perimeterCalculateTest() {
+        List<Position> positions = new ArrayList<>();
+        positions.add(new Position(-1.0,5.0));
+        positions.add(new Position(-1.0,-5.0));
+        positions.add(new Position(1.0,0.00));
+
+        assertTrue( PlanetsTriangle.calculatePerimeter(positions) == 158);
     }
 }

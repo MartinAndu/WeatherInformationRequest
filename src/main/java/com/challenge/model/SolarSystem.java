@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 @Component
 public class SolarSystem {
 
-
 	private List<Planet> planets;
 
 	@Autowired

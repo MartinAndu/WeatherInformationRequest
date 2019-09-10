@@ -19,8 +19,8 @@ public class TriangleEvaluator extends GeometricEvaluator {
 
             // There's a peak in every rain season . To reach that limit, We need to compare the perimeter among
             // the previous day and the next day.
-            Double currentArea = PlanetsTriangle.calculateArea(currentPositions);
-            if (currentArea > PlanetsTriangle.calculateArea(previousPositions) && currentArea > PlanetsTriangle.calculateArea(nextPositions)) {
+            Double currentArea = PlanetsTriangle.calculatePerimeter(currentPositions);
+            if (currentArea > PlanetsTriangle.calculatePerimeter(previousPositions) && currentArea > PlanetsTriangle.calculatePerimeter(nextPositions)) {
                 return Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER;
             }
             return Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN;
