@@ -1,10 +1,10 @@
 package com.challenge.services;
 
-import com.challenge.Model.Enums.Allignment;
-import com.challenge.Model.Enums.MotionRotationalDirection;
-import com.challenge.Model.Planet;
-import com.challenge.Model.SolarSystem;
-import com.challenge.Helpers.GeometricRequest;
+import com.challenge.model.enums.Allignment;
+import com.challenge.model.enums.MotionRotationalDirection;
+import com.challenge.model.Planet;
+import com.challenge.model.SolarSystem;
+import com.challenge.helpers.GeometricRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
