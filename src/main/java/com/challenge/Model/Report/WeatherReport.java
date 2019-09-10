@@ -31,7 +31,7 @@ public class WeatherReport {
 
     public WeatherReport() {
         strategyStrategyDictionary = new HashMap<>();
-        strategyStrategyDictionary.put(Weather.DROUGHNESS, new DroughtWeatherStrategy());
+        strategyStrategyDictionary.put(Weather.DROUGHT, new DroughtWeatherStrategy());
         strategyStrategyDictionary.put(Weather.RAIN, new RainWeatherStrategy());
         strategyStrategyDictionary.put(Weather.MAX_RAIN, new MaxRainWeatherStrategy());
         strategyStrategyDictionary.put(Weather.OPTIMAL, new OptimalWeatherStrategy());

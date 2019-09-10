@@ -6,20 +6,20 @@ public class DroughtWeatherStrategy implements WeatherReportStrategy {
 
     @Override
     public void calculateWeatherPeriod(ReportResults reportResults) {
-        if (!reportResults.getLastWeather().equals(Weather.DROUGHNESS)) {
-            reportResults.updatePeriodAmount(Weather.DROUGHNESS);
+        if (!reportResults.getLastWeather().equals(Weather.DROUGHT)) {
+            reportResults.updatePeriodAmount(Weather.DROUGHT);
         }
-        reportResults.updateForecast(Weather.DROUGHNESS);
-        reportResults.setLastWeather(Weather.DROUGHNESS);
+        reportResults.updateForecast(Weather.DROUGHT);
+        reportResults.setLastWeather(Weather.DROUGHT);
     }
 
     @Override
     public Weather getType() {
-        return Weather.DROUGHNESS;
+        return Weather.DROUGHT;
     }
 
     @Override
     public String getDescriptionType() {
-        return Weather.DROUGHNESS.name();
+        return Weather.DROUGHT.name();
     }
 }

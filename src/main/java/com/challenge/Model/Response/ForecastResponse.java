@@ -3,11 +3,11 @@ package com.challenge.Model.Response;
 public class ForecastResponse {
 
     private int day;
-    private String description;
+    private String weather;
 
-    public ForecastResponse(int day, String description) {
+    public ForecastResponse(int day, String weather) {
         this.day = day;
-        this.description = description;
+        this.weather = weather;
     }
 
     public int getDay() {
@@ -18,11 +18,11 @@ public class ForecastResponse {
         this.day = day;
     }
 
-    public String getDescription() {
-        return description;
+    public String getWeather() {
+        return weather;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setWeather(String weather) {
+        this.weather = weather;
     }
 }

@@ -30,7 +30,7 @@ public class WeatherInformationService {
 		this.weatherCondition = new HashMap<>();
 		weatherCondition.put(Allignment.NO_ALLIGNMENT, Weather.NO_INFORMATION);
 		weatherCondition.put(Allignment.PLANETS_ALLIGNED, Weather.OPTIMAL);
-		weatherCondition.put(Allignment.PLANETS_ALLIGNED_WITH_SUN, Weather.DROUGHNESS);
+		weatherCondition.put(Allignment.PLANETS_ALLIGNED_WITH_SUN, Weather.DROUGHT);
 		weatherCondition.put(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, Weather.RAIN);
 		weatherCondition.put(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, Weather.MAX_RAIN);
 	}

@@ -3,17 +3,20 @@ package com.challenge.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class SolarSystem {
 
+
 	private List<Planet> planets;
 
 	@Autowired
-	public SolarSystem(List<Planet> planets) {
-		this.planets = planets;
+	public SolarSystem() {
+		this.planets = new ArrayList<Planet>();
 	}
 
 	public void addPlanet(Planet planet) {

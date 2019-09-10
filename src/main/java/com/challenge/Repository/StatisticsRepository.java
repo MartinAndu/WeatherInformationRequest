@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Component
 @Repository
 public interface StatisticsRepository extends JpaRepository<Statistic, Long> {
+    Statistic findTopByOrderByIdDesc();
 }

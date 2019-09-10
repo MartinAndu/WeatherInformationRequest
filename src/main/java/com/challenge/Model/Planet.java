@@ -2,6 +2,8 @@ package com.challenge.Model;
 
 
 import com.challenge.Model.Enums.MotionRotationalDirection;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 public class Planet {
 
@@ -9,13 +11,12 @@ public class Planet {
 
 	private Integer distanceToSun;
 
-	private Position position;
-
 	private static Double initialAngle;
 
 	private Double angularVelocity;
 
 	private MotionRotationalDirection motionRotationalDirection;
+
 
 	public Planet(String name, Integer distanceToSun, MotionRotationalDirection motionRotationalDirection, Double initialAngle, Double angularVelocity) {
 		this.name = name;
