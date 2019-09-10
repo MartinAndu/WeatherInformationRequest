@@ -1,6 +1,7 @@
 package com.challenge.GeometricTests;
 
 
+import com.challenge.Exceptions.types.PlanetsOutOfBoundsException;
 import com.challenge.Model.Position;
 import com.challenge.Helpers.PlanetsAllignment;
 import org.junit.Before;
@@ -45,6 +46,41 @@ public class LineaPointsTest {
 
 
         assertFalse(PlanetsAllignment.arePointsColinear(positions));
+    }
+
+
+    @Test
+    public void PlanetsAlignedTest() {
+        List<Position> positions = new ArrayList<>();
+        positions.add(new Position(180.00,5.00));
+        positions.add(new Position(180.00,4.00));
+        positions.add(new Position(180.00,4.00));
+
+
+        assertTrue(PlanetsAllignment.arePointsColinear(positions));
+    }
+
+    @Test(expected = PlanetsOutOfBoundsException.class)
+    public void WrongPlanetSizeWithTwoPlanetsTest() {
+        List<Position> positions = new ArrayList<>();
+        positions.add(new Position(180.00,5.00));
+        positions.add(new Position(180.00,4.00));
+
+
+        assertTrue(PlanetsAllignment.arePointsColinear(positions));
+    }
+
+
+    @Test(expected = PlanetsOutOfBoundsException.class)
+    public void WrongPlanetSizeWithFourPlanetsTest() {
+        List<Position> positions = new ArrayList<>();
+        positions.add(new Position(180.00,5.00));
+        positions.add(new Position(180.00,4.00));
+        positions.add(new Position(180.00,4.00));
+        positions.add(new Position(180.00,4.00));
+
+
+        assertTrue(PlanetsAllignment.arePointsColinear(positions));
     }
 
 

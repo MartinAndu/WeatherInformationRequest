@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PlanetsAngleChangeTest {
+public class PlanetsReportingOptimalTest {
 
     @Autowired
     protected SolarSystem solarSystem;
@@ -29,7 +29,7 @@ public class PlanetsAngleChangeTest {
     }
 
     @Test
-    public void PlanetsAllignedWithMajorAngleChanged() {
+    public void PlanetsAlignedWithMajorAngleChanged() {
         solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,270.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
@@ -38,7 +38,7 @@ public class PlanetsAngleChangeTest {
     }
 
     @Test
-    public void PlanetsAllignedWithMediumAngleChanged() {
+    public void PlanetsAlignedWithMediumAngleChanged() {
         solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,180.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,5.0));
@@ -48,7 +48,7 @@ public class PlanetsAngleChangeTest {
 
 
     @Test
-    public void PlanetsAllignedWithMinorAngleChanged() {
+    public void PlanetsAlignedWithMinorAngleChanged() {
         solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.CLOCKWISE, 90.00,6.0));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
@@ -57,7 +57,7 @@ public class PlanetsAngleChangeTest {
     }
 
     @Test
-    public void PlanetsAllignedAfterManyRevolutionsAngleChanged() {
+    public void PlanetsAlignedAfterManyRevolutionsAngleChanged() {
         solarSystem.addPlanet(new Planet("Ferengi", 500, MotionRotationalDirection.CLOCKWISE, 90.00,1.0));
         solarSystem.addPlanet(new Planet("Betasoide", 2000, MotionRotationalDirection.CLOCKWISE, 90.00,3.0));
         solarSystem.addPlanet(new Planet("Vulcano", 1000, MotionRotationalDirection.COUNTERCLOCKWISE, 90.00,5.0));

@@ -13,7 +13,7 @@ public class TriangleEvaluator extends GeometricEvaluator {
 
         List<Position> currentPositions =  solarSystem.getPositionOnDay(day);
 
-        if (PlanetsTriangle.isSunInsideATriangle(currentPositions.get(0), currentPositions.get(1), currentPositions.get(2))) {
+        if (PlanetsTriangle.isSunInsideATriangle(currentPositions)) {
             List<Position> previousPositions = solarSystem.getPositionOnDay(day - 1);
             List<Position> nextPositions = solarSystem.getPositionOnDay(day + 1);
 

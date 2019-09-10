@@ -7,6 +7,7 @@ import com.challenge.Model.Response.ForecastResponse;
 import com.challenge.Repository.ForecastRepository;
 import com.challenge.Services.interfaces.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

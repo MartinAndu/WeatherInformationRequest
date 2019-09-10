@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PlanetsTriangleTest {
+public class PlanetsReportingRainTest {
 
     @Autowired
     protected SolarSystem solarSystem;
@@ -32,23 +32,23 @@ public class PlanetsTriangleTest {
     }
 
     @Test
-    public void PlanetsAllignedWithTestNoRain() {
+    public void PlanetsAlignedWithTestNoRain() {
         assertEquals(Allignment.NO_ALLIGNMENT, GeometricRequest.getGeometricResult(solarSystem, 1));
     }
 
 
     @Test
-    public void PlanetsAllignedWithTestNormalRain() {
+    public void PlanetsAlignedWithTestNormalRain() {
         assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN, GeometricRequest.getGeometricResult(solarSystem, 645));
     }
 
     @Test
-    public void PlanetsAllignedWithTest() {
-        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, GeometricRequest.getGeometricResult(solarSystem, 3577));
+    public void PlanetsAlignedWithTest() {
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, GeometricRequest.getGeometricResult(solarSystem, 24));
     }
 
     @Test
-    public void PlanetsAllignedWithMaxPerimeterTest() {
-        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, GeometricRequest.getGeometricResult(solarSystem, 2992));
+    public void PlanetsAlignedWithMaxPerimeterTest() {
+        assertEquals(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, GeometricRequest.getGeometricResult(solarSystem, 111));
     }
 }

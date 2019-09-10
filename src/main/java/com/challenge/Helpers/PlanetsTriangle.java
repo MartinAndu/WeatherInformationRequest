@@ -1,26 +1,32 @@
 package com.challenge.Helpers;
 
+import com.challenge.Exceptions.Messages;
+import com.challenge.Exceptions.types.PlanetsOutOfBoundsException;
+import com.challenge.Exceptions.validators.PositionValidator;
 import com.challenge.Model.Position;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.util.List;
-import java.util.stream.IntStream;
 
 
 public class PlanetsTriangle {
 
-    PlanetsTriangle() {}
+    public static boolean isSunInsideATriangle(List<Position> positions) {
+        if (!PositionValidator.ValidatePositionsSize(positions)) throw new PlanetsOutOfBoundsException(Messages.OUT_OF_BOUNDS_PLANETS);
 
-    public static boolean isSunInsideATriangle(Position position1, Position position2, Position position3) {
         Path2D.Double trianglePath = new Path2D.Double();
-        trianglePath.moveTo(position1.getCoordinateX(), position1.getCoordinateY());
-        trianglePath.lineTo(position2.getCoordinateX(), position2.getCoordinateY());
-        trianglePath.lineTo(position3.getCoordinateX(), position3.getCoordinateY());
+        trianglePath.moveTo(positions.get(0).getCoordinateX(), positions.get(0).getCoordinateY());
+        trianglePath.lineTo(positions.get(1).getCoordinateX(), positions.get(1).getCoordinateY());
+        trianglePath.lineTo(positions.get(2).getCoordinateX(), positions.get(2).getCoordinateY());
         trianglePath.closePath();
         return (trianglePath.contains(new Point2D.Double(0, 0)));
     }
 
     public static Double calculateArea(List<Position> positions) {
+
+        if (!PositionValidator.ValidatePositionsSize(positions)) throw new PlanetsOutOfBoundsException(Messages.OUT_OF_BOUNDS_PLANETS);
+
+        // TODO: use Intstream
         double distance1 = Point2D.Double.distanceSq(positions.get(0).getCoordinateX(), positions.get(0).getCoordinateY(), positions.get(1).getCoordinateX(), positions.get(1).getCoordinateY());
         double distance2 = Point2D.Double.distanceSq(positions.get(1).getCoordinateX(), positions.get(1).getCoordinateY(), positions.get(2).getCoordinateX(), positions.get(2).getCoordinateY());
         double distance3 = Point2D.Double.distanceSq(positions.get(2).getCoordinateX(), positions.get(2).getCoordinateY(), positions.get(0).getCoordinateX(), positions.get(0).getCoordinateY());

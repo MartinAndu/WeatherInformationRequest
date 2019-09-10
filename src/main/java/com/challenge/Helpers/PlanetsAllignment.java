@@ -1,6 +1,10 @@
 package com.challenge.Helpers;
 
 
+import com.challenge.Exceptions.Messages;
+import com.challenge.Exceptions.types.PlanetsOutOfBoundsException;
+import com.challenge.Exceptions.validators.PositionValidator;
+import com.challenge.Model.Consts.Consts;
 import com.challenge.Model.Position;
 import com.challenge.Model.SolarSystem;
 import com.challenge.Services.WeatherInformationService;
@@ -9,11 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.awt.geom.Line2D;
-import java.awt.geom.Path2D;
-import java.awt.geom.Point2D;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Service
 public class PlanetsAllignment  {
@@ -22,11 +22,8 @@ public class PlanetsAllignment  {
 
     private static final Double DECIMAL_THRESHOLD = 1.2e-5;
 
-    PlanetsAllignment() {}
-
-
 	public static boolean arePointsColinear(List<Position> positions) {
-
+		if (!PositionValidator.ValidatePositionsSize(positions)) throw new PlanetsOutOfBoundsException(Messages.OUT_OF_BOUNDS_PLANETS);
 
 		Line2D line = new Line2D.Double(positions.get(0).getCoordinateX(),
 				positions.get(0).getCoordinateY(),
@@ -43,18 +40,22 @@ public class PlanetsAllignment  {
 		/*
 			A temporal allignment could take place while planets are orbitings.
 			A possible workaround to detect that transition is by comparing
-			slopes signature formed by planets at the current day vs slopes signature
+			angle signature formed by planets at the current day against angle signature
 			formed by planets at the previous day
 		 */
 		List<Position> currentPositions = solarSystem.getPositionOnDay(day);
+
+		if (!PositionValidator.ValidatePositionsSize(currentPositions)) throw new PlanetsOutOfBoundsException(Messages.OUT_OF_BOUNDS_PLANETS);
+
 		List<Position> previousPositions = solarSystem.getPositionOnDay(day - 1);
 
 
 		Double currentFinalAngle = calculateTotalAngle(currentPositions);
 		Double previousFinalAngle = calculateTotalAngle(previousPositions);
 
-		// TODO: avoid using arePointsColinear, try something else.
-		return (previousFinalAngle  > DECIMAL_THRESHOLD && currentFinalAngle < DECIMAL_THRESHOLD) || ( previousFinalAngle < DECIMAL_THRESHOLD && currentFinalAngle > DECIMAL_THRESHOLD) && !arePointsColinear(previousPositions);
+		return (previousFinalAngle  > DECIMAL_THRESHOLD && currentFinalAngle < DECIMAL_THRESHOLD)
+				|| ( previousFinalAngle < DECIMAL_THRESHOLD && currentFinalAngle > DECIMAL_THRESHOLD)
+				&& !arePointsColinear(previousPositions);
 	}
 
 	private static Double calculateTotalAngle(List<Position> position) {

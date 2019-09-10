@@ -17,8 +17,6 @@ public class Planet {
 
 	private MotionRotationalDirection motionRotationalDirection;
 
-	//TODO: Cambiar esto de pasarle el ángulo inicial porque va a ser el mismo para todos los planetas
-	//TODO: Fijarse si hace falta pasar las posiciones como Double.
 	public Planet(String name, Integer distanceToSun, MotionRotationalDirection motionRotationalDirection, Double initialAngle, Double angularVelocity) {
 		this.name = name;
 		this.distanceToSun = distanceToSun;
@@ -29,7 +27,8 @@ public class Planet {
 
 	public Position getPosition(int day) {
 		// The convention concerning languages ( Java in this case) , indicates that
-		// 0 radians is to the right, therefore, increasing angles will
+		// 0 radians is to the right, therefore, angles will increase towards
+		// the left. To fix that,
 		Double angle = Math.toRadians(this.initialAngle - this.motionRotationalDirection.getValue() * angularVelocity * day);
 		Double coordinateX = Math.cos(angle) * this.distanceToSun;
 		Double coordinateY = Math.sin(angle) * this.distanceToSun;

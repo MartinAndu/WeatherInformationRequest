@@ -8,9 +8,9 @@ import com.challenge.Model.Response.StatisticResponse;
 import com.challenge.Repository.StatisticsRepository;
 import com.challenge.Services.interfaces.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Collectors;
 
 @Service
 public class StatisticsServiceImpl implements StatisticsService {

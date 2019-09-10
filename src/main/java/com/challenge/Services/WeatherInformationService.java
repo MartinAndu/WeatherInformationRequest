@@ -1,6 +1,8 @@
 package com.challenge.Services;
 
+import com.challenge.Exceptions.types.PlanetsOutOfBoundsException;
 import com.challenge.Helpers.GeometricRequest;
+import com.challenge.Model.Consts.Consts;
 import com.challenge.Model.Enums.Weather;
 import com.challenge.Model.Enums.Allignment;
 import com.challenge.Model.Report.WeatherReport;
@@ -33,19 +35,25 @@ public class WeatherInformationService {
 		weatherCondition.put(Allignment.PLANETS_FORMING_TRIANGLE_WITH_SUN_MAX_PERIMETER, Weather.MAX_RAIN);
 	}
 
-	public void orbitAroundTheSun(SolarSystem solarSystem, int amountOfDays) {
+	public void orbitAroundTheSun(SolarSystem solarSystem) {
 		LOGGER.info("Planets orbiting around the sun");
 
-		for (int day = 0; day < amountOfDays; day++) {
-			// Gets the weather on this day and then
-			// updates the report with this information.
-			Weather weather = weatherCondition.get(GeometricRequest.getGeometricResult(solarSystem, day));
-			weatherReport.setStrategy(weather);
-			weatherReport.updateReport(day);
-		}
+		try {
+			for (int day = 0; day < Consts.AMOUNT_OF_DAYS; day++) {
+				// Gets the weather on this day and then
+				// updates the report with this information.
+				Weather weather = weatherCondition.get(GeometricRequest.getGeometricResult(solarSystem, day));
+				weatherReport.setStrategy(weather);
+				weatherReport.updateReport(day);
+			}
 
-		LOGGER.info("Persisting data to database using H2");
-		weatherReport.saveInfoToDatabase();
+			LOGGER.info("Persisting data to database using H2");
+			weatherReport.saveInfoToDatabase();
+
+
+		} catch (PlanetsOutOfBoundsException planetsException) {
+			LOGGER.error("Error getting weather condition: {}" , planetsException.getMessage());
+		}
 	}
 
 }
