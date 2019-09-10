@@ -38,17 +38,19 @@ data. ( see Report package)
 # Problem Solution
 
 * Every geometric problem is solved by classes in Helpers package. 
-  ** PlanetsAllignment : we determine whether planets are aligned or not. To pull that off, we calculate on PlanetsAllignment::arePointsColinear if distance difference between two lines are less than a threshold. If that checks out, then we've just found that our planets are colinear. On PlanetAllignment::planetAllignmentTransition we compare between one day and it's previous day if there was a temporary alignment. To calculate that we first find angles between line segments on previous and current days. If the angle sign has changed, then we've just found that at one singular moment between two days, there was an alignment.
-  ** TriangleAllignment: we determine wheter planets form a triangle shape with the sun position included inside of it. We use use Path2D.Double library to check if there's a triangle shape and if it contains the sun position. Then we use planetAllignmentTransition::calculatePerimeter to find out the peak of a maximum rain. To pull that off, we compare perimeters among previous, current, and next day. If current's perimeter is the largest, then we've reach a peak of rain.
+  
+- PlanetsAllignment : we determine whether planets are aligned or not. To pull that off, we calculate on PlanetsAllignment::arePointsColinear if distance difference between two lines are less than a threshold. If that checks out, then we've just found that our planets are colinear. On PlanetAllignment::planetAllignmentTransition we compare between one day and it's previous day if there was a temporary alignment. To calculate that we first find angles between line segments on previous and current days. If the angle sign has changed, then we've just found that at one singular moment between two days, there was an alignment.
+
+- TriangleAllignment: we determine wheter planets form a triangle shape with the sun position included inside of it. We use use Path2D.Double library to check if there's a triangle shape and if it contains the sun position. Then we use planetAllignmentTransition::calculatePerimeter to find out the peak of a maximum rain. To pull that off, we compare perimeters among previous, current, and next day. If current's perimeter is the largest, then we've reach a peak of rain.
    
 # Deployment
  
-  Heroku deployment was used to run this app in the cloud. The way to retrieve data is as follows:
-       https://secret-harbor-95544.herokuapp.com/api/forecast/   --> Home Page
-       https://secret-harbor-95544.herokuapp.com/api/forecast?day=2 --> Get weather on day 2
-       https://secret-harbor-95544.herokuapp.com/api/forecast/report/all --> Get full report for next 10 years 
-       https://secret-harbor-95544.herokuapp.com/api/forecast/report/statistics -> Get full statistics asked in the requirements
-       
+Heroku deployment was used to run this app in the cloud. The way to retrieve data is as follows:
+* https://secret-harbor-95544.herokuapp.com/api/forecast/   --> Home Page
+* https://secret-harbor-95544.herokuapp.com/api/forecast?day=2  --> Get weather on day 2
+* https://secret-harbor-95544.herokuapp.com/api/forecast/report/all --> Get full report for next 10 years 
+* https://secret-harbor-95544.herokuapp.com/api/forecast/report/statistics  --> Get full statistics asked in the requirements
+
     
 
 
