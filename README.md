@@ -6,6 +6,10 @@ Weather Information service created as a solar system's forecast service that de
  - Maven
  - Heroku CLI
 
+# Packaging and Running
+You can use an IDE to handle this section but the way to do it by using CLI is:
+* To package this application, run the following command: ```mvn clean package```
+* After doing that, to set up this application, run the following command: ```java -jar target/solarSystem-0.0.1-MELI.jar```
 
 # Hypothesis and Suppositions
 
